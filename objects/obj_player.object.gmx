@@ -131,8 +131,14 @@ if (place_meeting(x, y + vSpeed, par_wall)) {
 else {
    canJump = false;
 }
-
 y += vSpeed;
+
+if (facing == 1) {
+   instance_deactivate_object(obj_spikes);
+}
+else {
+   instance_activate_object(obj_spikes);    
+} 
 </string>
           </argument>
         </arguments>

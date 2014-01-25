@@ -10,6 +10,7 @@
     <sprite>sprites\spr_left</sprite>
     <sprite>sprites\spr_wall</sprite>
     <sprite>sprites\spr_ladder</sprite>
+    <sprite>sprites\spr_spikes</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
@@ -19,6 +20,7 @@
     <object>objects\par_wall</object>
     <object>objects\obj_ladder</object>
     <object>objects\par_ladder</object>
+    <object>objects\obj_spikes</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room0</room>
