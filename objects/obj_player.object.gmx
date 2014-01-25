@@ -30,7 +30,7 @@ hSpeed = 0;
 grav = 0.5;
 jumpHeight = 10;
 canJump = true;
-grounded = true;
+justTurned = true;
 ladder = false;
 //1 = right, -1 = left
 globalvar facing;
@@ -61,6 +61,11 @@ image_index = 0;
           <argument>
             <kind>1</kind>
             <string>if (keyboard_check(vk_left)) {
+   if (facing == 1) {
+      justTurned = true;
+   }
+   else 
+      justTurned = false;
    hSpeed = -5;
    facing = -1;
    sprite_index = spr_left;
@@ -68,6 +73,11 @@ image_index = 0;
 }
 
 if (keyboard_check(vk_right)) {
+   if (facing == -1) {
+      justTurned = true;
+   }
+   else
+       justTurned = false;
    hSpeed = 5;
    facing = 1;
    sprite_index = spr_right;
@@ -133,12 +143,14 @@ else {
 }
 y += vSpeed;
 
-if (facing == 1) {
-   instance_deactivate_object(obj_spikes);
+if (justTurned) {
+    if (facing == 1) {
+       instance_deactivate_object(obj_spikes);
+    }
+    else {
+       instance_activate_object(obj_spikes);    
+    } 
 }
-else {
-   instance_activate_object(obj_spikes);    
-} 
 </string>
           </argument>
         </arguments>
