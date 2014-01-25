@@ -6,11 +6,13 @@
   <NewExtensions/>
   <sounds name="sound"/>
   <sprites name="sprites">
-    <sprite>sprites\spr_right</sprite>
     <sprite>sprites\spr_left</sprite>
+    <sprite>sprites\spr_right</sprite>
     <sprite>sprites\spr_wall</sprite>
     <sprite>sprites\spr_ladder</sprite>
     <sprite>sprites\spr_spikes</sprite>
+    <sprite>sprites\spr_platform</sprite>
+    <sprite>sprites\spr_marker</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
@@ -21,6 +23,9 @@
     <object>objects\obj_ladder</object>
     <object>objects\par_ladder</object>
     <object>objects\obj_spikes</object>
+    <object>objects\obj_platform</object>
+    <object>objects\obj_control</object>
+    <object>objects\obj_marker</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room0</room>

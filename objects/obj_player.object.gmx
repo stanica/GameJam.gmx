@@ -37,7 +37,6 @@ globalvar facing;
 facing = 1;
 image_speed = 0;
 image_index = 0;
-
 </string>
           </argument>
         </arguments>
@@ -60,7 +59,7 @@ image_index = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (keyboard_check(vk_left)) {
+            <string>if (keyboard_check(vk_left) &amp;&amp; place_free(x-hSpeed, y)) {
    if (facing == 1) {
       justTurned = true;
    }
@@ -72,12 +71,12 @@ image_index = 0;
    image_speed = 0.25;
 }
 
-if (keyboard_check(vk_right)) {
+if (keyboard_check(vk_right) &amp;&amp; place_free(x-hSpeed, y)) {
    if (facing == -1) {
       justTurned = true;
    }
    else
-       justTurned = false;
+      justTurned = false;
    hSpeed = 5;
    facing = 1;
    sprite_index = spr_right;
@@ -134,13 +133,15 @@ if (place_meeting(x, y + vSpeed, par_wall)) {
       y += sign(vSpeed);
    }
    if (sign(vSpeed) == 1) {
-      canJump = true;     
+      canJump = true;    
+      hSpeed = 0; 
    }
    vSpeed = 0; 
 }
 else {
    canJump = false;
 }
+
 y += vSpeed;
 
 if (justTurned) {
@@ -151,6 +152,13 @@ if (justTurned) {
        instance_activate_object(obj_spikes);    
     } 
 }
+
+if (position_meeting(x-sprite_xoffset+sprite_width/2,y-sprite_yoffset+sprite_height, obj_platform)) {
+   var obj = instance_position(x-sprite_xoffset+sprite_width/2,y-sprite_yoffset+sprite_height, obj_platform);
+   hSpeed = obj.hspeed;
+   vSpeed = 0;
+}
+
 </string>
           </argument>
         </arguments>
