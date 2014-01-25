@@ -28,7 +28,10 @@
             <string>vSpeed = 0;
 hSpeed = 0;
 grav = 0.5;
+jumpHeight = 10;
 canJump = true;
+grounded = true;
+ladder = false;
 //1 = right, -1 = left
 globalvar facing;
 facing = 1;
@@ -59,7 +62,6 @@ image_index = 0;
             <kind>1</kind>
             <string>if (keyboard_check(vk_left)) {
    hSpeed = -5;
-   x += -5;
    facing = -1;
    sprite_index = spr_left;
    image_speed = 0.25;
@@ -67,7 +69,6 @@ image_index = 0;
 
 if (keyboard_check(vk_right)) {
    hSpeed = 5;
-   x += 5;
    facing = 1;
    sprite_index = spr_right;
    image_speed = 0.25;
@@ -75,37 +76,60 @@ if (keyboard_check(vk_right)) {
 
 if (keyboard_check_released(vk_left) || keyboard_check_released(vk_right)) {
    image_speed = 0;
+   hSpeed = 0;
 }
 
 if ((keyboard_check_direct(vk_left) &amp;&amp; keyboard_check_direct(vk_right))) {
-   x += 0;
+   hSpeed = 0;
    image_speed = 0;
 }
 
 if (keyboard_check_direct(vk_space) &amp;&amp; canJump) {
-   vSpeed = -10;
+   vSpeed = -jumpHeight;
 }
 
 vSpeed += grav;
 
-//Vertical collision
-if (place_meeting(x, y + vSpeed, par_wall)) {
-   while (!place_meeting(x, y+1, par_wall)) {
-      y += 1;
-   }
-   vSpeed = 0;
-   canJump = true;      
+//Ladder collision
+if ((keyboard_check(vk_up) || keyboard_check(vk_down)) &amp;&amp; place_meeting(x, y, par_ladder)) {
+      ladder = true;
 }
-else {
-   canJump = false;
+
+if (ladder) {
+   vSpeed = 0;
+   if (keyboard_check(vk_up))
+      vSpeed = -2;
+   if (keyboard_check(vk_down)) 
+      vSpeed = 2;
+   if (!place_meeting(x, y, par_ladder))
+      ladder = false;
+   if (keyboard_check(vk_space)) {
+      vSpeed = -jumpHeight/2;
+      ladder = false;
+   }
 }
 
 //Horizontal collision
-if (place_meeting(x + 16, y, par_wall)) {
-   while (!place_meeting(x + 16, y, par_wall)) {
-      x += 1;
+if (place_meeting(x + hSpeed, y, par_wall)) {
+   while (!place_meeting(x + sign(hSpeed), y, par_wall)) {
+      x += sign(hSpeed);
    }
-   x += 0;
+   hSpeed = 0;
+}
+x += hSpeed;
+
+//Vertical collision
+if (place_meeting(x, y + vSpeed, par_wall)) {
+   while (!place_meeting(x, y+sign(vSpeed), par_wall)) {
+      y += sign(vSpeed);
+   }
+   if (sign(vSpeed) == 1) {
+      canJump = true;     
+   }
+   vSpeed = 0; 
+}
+else {
+   canJump = false;
 }
 
 y += vSpeed;
