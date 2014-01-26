@@ -51,14 +51,13 @@
     <object>objects\obj_concrete</object>
     <object>objects\obj_circuit</object>
     <object>objects\obj_gate</object>
-    <object>objects\obj_ram</object>
-    <object>objects\obj_wrench</object>
-    <object>objects\obj_wire</object>
     <object>objects\obj_help</object>
     <object>objects\obj_back</object>
     <object>objects\obj_spiky_goomba</object>
+    <object>objects\obj_item</object>
   </objects>
   <rooms name="rooms">
+    <room>rooms\test</room>
     <room>rooms\rm_menu</room>
     <room>rooms\rm_test</room>
     <room>rooms\rm_help</room>
@@ -66,7 +65,8 @@
     <room>rooms\rm_tut2</room>
     <room>rooms\rm_tut3</room>
     <room>rooms\rm_tut4</room>
-    <room>rooms\test</room>
+    <room>rooms\rm_tut5</room>
+    <room>rooms\room10</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

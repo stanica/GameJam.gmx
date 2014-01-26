@@ -104,6 +104,8 @@ hasItem = false;
    hSpeed = -moveSpeed;
    facing = -1;
    sprite_index = spr_left;
+   if (!canJump)
+      hSpeed = -2;
 }
 
 if (keyboard_check(vk_right) &amp;&amp; !place_meeting(x+moveSpeed,y, obj_platform) &amp;&amp; canMove &amp;&amp; !keyboard_check(vk_control)) {
@@ -181,10 +183,10 @@ if (ladder) {
       vSpeed = 2;
       image_speed = 0.2;
    }
-   else if (keyboard_check(vk_left)) {
+   else if (keyboard_check(vk_left) &amp;&amp; place_free(x-2,y)) {
       x += -2;
    }
-   else if (keyboard_check(vk_right)) {
+   else if (keyboard_check(vk_right)&amp;&amp; place_free(x+2,y)) {
       x += 2;
       image_speed = 0.2;
    }

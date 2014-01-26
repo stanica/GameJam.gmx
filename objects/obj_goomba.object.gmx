@@ -66,11 +66,11 @@ if (place_free(x-32, y+1) &amp;&amp; gombaface == -1 &amp;&amp; falling != true)
 }
 
 
-if ((place_meeting(x+1, y, par_wall) || place_meeting(x+16, y, obj_spikes) )&amp;&amp; gombaface == 1 &amp;&amp; falling != true) {
+if ((place_meeting(x+1, y, par_wall) || place_meeting(x+1, y, obj_goomba) || place_meeting(x+16, y, obj_spikes) )&amp;&amp; gombaface == 1 &amp;&amp; falling != true) {
     gombaface = -1
 }
 
-if ((place_meeting(x-1, y, par_wall) || place_meeting(x-16, y, obj_spikes) )&amp;&amp; gombaface == -1 &amp;&amp; falling != true) {
+if ((place_meeting(x-1, y, par_wall) || place_meeting(x-1, y, obj_goomba) || place_meeting(x-16, y, obj_spikes) )&amp;&amp; gombaface == -1 &amp;&amp; falling != true) {
     gombaface = 1
 }
 
@@ -164,7 +164,7 @@ if (place_meeting(x, y+16, obj_spikes)) {
 //      make the player bounce up a bit and destroy the monster
 if (obj_player.vSpeed &gt; 0 || obj_player.vSpeed &lt; 0) {
     audio_play_sound(snd_goomba_stomp, 1, false);
-    obj_player.vSpeed = -8;
+    obj_player.vSpeed = -(1.2 * abs(obj_player.vSpeed)) ;
     instance_destroy();
 // if player is coming from the left side or right side
 } else{

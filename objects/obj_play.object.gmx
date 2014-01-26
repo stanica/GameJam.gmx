@@ -47,7 +47,7 @@ image_speed = 0;
         <arguments>
           <argument>
             <kind>11</kind>
-            <room>rm_tut3</room>
+            <room>room10</room>
           </argument>
         </arguments>
       </action>
