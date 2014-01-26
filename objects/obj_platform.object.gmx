@@ -88,7 +88,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>obj_player.hSpeed = sign(hspeed) * obj_player.moveSpeed/2;
+            <string>obj_player.x += sign(hspeed) * obj_player.moveSpeed/2;
 obj_player.canMove = false;
 </string>
           </argument>

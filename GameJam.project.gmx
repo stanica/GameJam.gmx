@@ -19,6 +19,9 @@
     <sprite>sprites\spr_stop_right</sprite>
     <sprite>sprites\spr_stop_left</sprite>
     <sprite>sprites\spr_push</sprite>
+    <sprite>sprites\spr_pull</sprite>
+    <sprite>sprites\spr_jump</sprite>
+    <sprite>sprites\spr_land</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
