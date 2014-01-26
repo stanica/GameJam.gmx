@@ -34,9 +34,15 @@
     <sprite>sprites\spr_back</sprite>
     <sprite>sprites\spr_bash_right</sprite>
     <sprite>sprites\spr_bash_left</sprite>
+    <sprite>sprites\spr_circuit</sprite>
   </sprites>
-  <backgrounds name="background"/>
+  <backgrounds name="background">
+    <background>background\bg_menu</background>
+  </backgrounds>
   <paths name="paths"/>
+  <fonts name="fonts">
+    <font>fonts\font0</font>
+  </fonts>
   <objects name="objects">
     <object>objects\obj_player</object>
     <object>objects\obj_stone</object>
@@ -51,17 +57,17 @@
     <object>objects\obj_goeba</object>
     <object>objects\obj_play</object>
     <object>objects\obj_concrete</object>
-    <object>objects\obj_circuit</object>
     <object>objects\obj_gate</object>
     <object>objects\obj_help</object>
     <object>objects\obj_back</object>
     <object>objects\obj_bash</object>
     <object>objects\obj_item</object>
     <object>objects\obj_spikes_eth</object>
+    <object>objects\obj_circuit</object>
+    <object>objects\obj_draw</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_menu</room>
-    <room>rooms\rm_test</room>
     <room>rooms\rm_help</room>
     <room>rooms\rm_tut1</room>
     <room>rooms\rm_tut2</room>
@@ -71,8 +77,10 @@
     <room>rooms\rm_tut6</room>
     <room>rooms\rm_tut7</room>
     <room>rooms\rm_level1</room>
-    <room>rooms\room_level2</room>
+    <room>rooms\rm_level2</room>
     <room>rooms\test</room>
+    <room>rooms\rm_test</room>
+    <room>rooms\rm_credits</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

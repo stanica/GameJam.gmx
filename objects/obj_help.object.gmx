@@ -49,7 +49,7 @@ image_speed = 0;
         <arguments>
           <argument>
             <kind>11</kind>
-            <room>rm_help</room>
+            <room>rm_credits</room>
           </argument>
         </arguments>
       </action>
@@ -66,5 +66,8 @@ image_speed = 0;
   <PhysicsObjectFriction>0.200000002980232</PhysicsObjectFriction>
   <PhysicsObjectAwake>-1</PhysicsObjectAwake>
   <PhysicsObjectKinematic>0</PhysicsObjectKinematic>
-  <PhysicsShapePoints/>
+  <PhysicsShapePoints>
+    <point>190,126</point>
+    <point>80,80</point>
+  </PhysicsShapePoints>
 </object>
