@@ -140,13 +140,13 @@ if (keyboard_check(vk_control) &amp;&amp; place_meeting(x-1,y,obj_movable)) {
     var inst;
     inst = instance_place(x-1, y, obj_movable);
     with (inst) {
-        if (keyboard_check(vk_left) &amp;&amp; place_free(obj_player.x-34, y)) {
+        if (keyboard_check(vk_left) &amp;&amp; place_free(obj_player.x-32, y)) {
             obj_player.sprite_index = spr_push;
             obj_player.hSpeed = -2;
             inst.x += -2;
            
         }
-        else if (keyboard_check(vk_left) &amp;&amp; !place_free(obj_player.x-34, y)) {
+        else if (keyboard_check(vk_left) &amp;&amp; !place_free(obj_player.x-32, y)) {
             obj_player.sprite_index = spr_push;
         }
         if (keyboard_check(vk_right) &amp;&amp; place_free(obj_player.x+2, y)) {
