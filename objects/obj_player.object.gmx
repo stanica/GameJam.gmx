@@ -86,10 +86,11 @@ if (keyboard_check(vk_right) &amp;&amp; !place_meeting(x+moveSpeed,y, obj_platfo
    image_speed = 0.25;
 }
 
-
-
 if (keyboard_check_released(vk_left) || keyboard_check_released(vk_right)) {
-   sprite_index = spr_stop;
+   if (facing == 1)
+      sprite_index = spr_stop_right;
+   else
+       sprite_index = spr_stop_left;
    image_speed = 0;
 }
 
@@ -110,9 +111,14 @@ if (keyboard_check(vk_control) &amp;&amp; place_meeting(x-1,y,obj_movable)) {
     inst = instance_place(x-1, y, obj_movable);
     with (inst) {
         if (keyboard_check(vk_left) &amp;&amp; place_free(obj_player.x-32, inst.y)) {
+            obj_player.sprite_index = spr_push;
+            image_speed = 0.15;
             obj_player.hSpeed = -2;
             inst.x += -2;
            
+        }
+        else if (keyboard_check(vk_left) &amp;&amp; !place_free(obj_player.x-32, inst.y)) {
+            obj_player.sprite_index = spr_push;
         }
         if (keyboard_check(vk_right) &amp;&amp; place_free(obj_player.x+1, inst.y)) {
             obj_player.sprite_index = spr_left;
@@ -129,10 +135,22 @@ if ((keyboard_check(vk_up) || keyboard_check(vk_down)) &amp;&amp; place_meeting(
 
 if (ladder) {
    vSpeed = 0;
-   if (keyboard_check(vk_up))
+   if (facing == 1) {
+      sprite_index = spr_ladder_right;
+   }
+   else {
+      sprite_index = spr_ladder_left;
+   }
+   if (keyboard_check(vk_up)) {
       vSpeed = -2;
-   if (keyboard_check(vk_down)) 
+      image_speed = 0.2;
+   }
+   else if (keyboard_check(vk_down)) {
       vSpeed = 2;
+      image_speed = 0.2;
+   }
+   else 
+      image_speed = 0;
    if (!place_meeting(x, y, par_ladder))
       ladder = false;
    if (keyboard_check(vk_space)) {
