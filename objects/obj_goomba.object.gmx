@@ -113,7 +113,7 @@ if (place_meeting(x, y-16, obj_movable)) {
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="obj_wall">
+    <event eventtype="4" ename="obj_stone">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -155,16 +155,14 @@ if (place_meeting(x, y-16, obj_movable)) {
             <kind>1</kind>
             <string>// if the player is dropping and there is a collision between monster's head and player
 //      make the player bounce up a bit and destroy the monster
-if (obj_player.vSpeed &gt; 0 &amp;&amp; place_meeting(x, y-16, obj_player)) {
+if (obj_player.vSpeed &gt; 0 || obj_player.vSpeed &lt; 0) {
     obj_player.vSpeed = -8;
     instance_destroy();
-// if player is coming from the left side
-} else if (obj_player.vSpeed == 0 &amp;&amp; place_meeting(x-16, y, obj_player)){
-    game_restart();
-// if player is coming from the right side
-} else if (obj_player.vSpeed == 0 &amp;&amp; place_meeting(x+16, y, obj_player)){
+// if player is coming from the left side or right side
+} else{
     game_restart();
 }
+
 </string>
           </argument>
         </arguments>

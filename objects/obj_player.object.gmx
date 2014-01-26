@@ -42,6 +42,7 @@ image_index = 0;
 pushpull = false;
 distance = 0;
 actualDiff = 0;
+hasItem = false;
 </string>
           </argument>
         </arguments>
