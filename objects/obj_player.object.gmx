@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>vSpeed = 0;
 hSpeed = 0;
-grav = 0.7;
+grav = 0.55;
 jumpHeight = 10;
 moveSpeed = 5;
 canJump = true;
@@ -95,7 +95,7 @@ hasItem = false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (keyboard_check(vk_left) &amp;&amp; !place_meeting(x-moveSpeed,y, obj_platform) &amp;&amp; canMove) {
+            <string>if (keyboard_check(vk_left) &amp;&amp; !place_meeting(x,y, obj_platform) &amp;&amp; canMove) {
    if (facing == 1) {
       justTurned = true;
    }
@@ -108,7 +108,7 @@ hasItem = false;
       hSpeed = -2;
 }
 
-if (keyboard_check(vk_right) &amp;&amp; !place_meeting(x+moveSpeed,y, obj_platform) &amp;&amp; canMove &amp;&amp; !keyboard_check(vk_control)) {
+if (keyboard_check(vk_right) &amp;&amp; !place_meeting(x,y, obj_platform) &amp;&amp; canMove &amp;&amp; !keyboard_check(vk_control)) {
    if (facing == -1) {
       justTurned = true;
    }
@@ -119,6 +119,11 @@ if (keyboard_check(vk_right) &amp;&amp; !place_meeting(x+moveSpeed,y, obj_platfo
    sprite_index = spr_right;
 }
 image_speed = 0.2;
+
+if(place_meeting(x,y, obj_platform) || place_meeting(x+1,y, obj_platform)) {
+   hSpeed = 0;
+}
+
 if (keyboard_check_released(vk_left) || keyboard_check_released(vk_right)) {
    if (facing == 1)
       sprite_index = spr_stop_right;
@@ -234,6 +239,9 @@ y += vSpeed;
 
 if (justTurned) {
     if (facing == 1) {
+       with (obj_spikes){
+            instance_create(x, y, obj_spikes_eth);
+       }
        instance_deactivate_object(obj_spikes);
     }
     else {
@@ -244,11 +252,19 @@ if (justTurned) {
 if position_meeting(x-sprite_xoffset+sprite_width/2,y-sprite_yoffset+sprite_height,obj_platform)
 {
   objID=instance_position(x-sprite_xoffset+sprite_width/2,y-sprite_yoffset+sprite_height,obj_platform)
-  hspeed = objID.hspeed;
+     hspeed = objID.hspeed;
+     if (!place_free(x-objID.hspeed-moveSpeed, y) || !place_free(x+objID.hspeed, y))
+        hspeed = 0;
 }
 else {
   hspeed=0;
 }
+
+view_xview[0] = x - (view_wview[0] / 2);
+view_yview[0] = y - (view_hview[0] / 2);
+
+var x1 = floor(x/32);
+var y1 = floor(y/32);
 </string>
           </argument>
         </arguments>

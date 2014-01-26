@@ -26,12 +26,14 @@
     <sprite>sprites\spr_pull</sprite>
     <sprite>sprites\spr_jump</sprite>
     <sprite>sprites\spr_land</sprite>
-    <sprite>sprites\spr_goomba</sprite>
+    <sprite>sprites\spr_goeba_left</sprite>
+    <sprite>sprites\spr_goeba_right</sprite>
     <sprite>sprites\spr_item</sprite>
     <sprite>sprites\spr_buttons</sprite>
     <sprite>sprites\spr_gate</sprite>
     <sprite>sprites\spr_back</sprite>
-    <sprite>sprites\spr_spiky_goomba</sprite>
+    <sprite>sprites\spr_bash_right</sprite>
+    <sprite>sprites\spr_bash_left</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
@@ -46,18 +48,18 @@
     <object>objects\obj_control</object>
     <object>objects\obj_marker</object>
     <object>objects\obj_movable</object>
-    <object>objects\obj_goomba</object>
+    <object>objects\obj_goeba</object>
     <object>objects\obj_play</object>
     <object>objects\obj_concrete</object>
     <object>objects\obj_circuit</object>
     <object>objects\obj_gate</object>
     <object>objects\obj_help</object>
     <object>objects\obj_back</object>
-    <object>objects\obj_spiky_goomba</object>
+    <object>objects\obj_bash</object>
     <object>objects\obj_item</object>
+    <object>objects\obj_spikes_eth</object>
   </objects>
   <rooms name="rooms">
-    <room>rooms\test</room>
     <room>rooms\rm_menu</room>
     <room>rooms\rm_test</room>
     <room>rooms\rm_help</room>
@@ -66,7 +68,11 @@
     <room>rooms\rm_tut3</room>
     <room>rooms\rm_tut4</room>
     <room>rooms\rm_tut5</room>
-    <room>rooms\room10</room>
+    <room>rooms\rm_tut6</room>
+    <room>rooms\rm_tut7</room>
+    <room>rooms\rm_level1</room>
+    <room>rooms\room_level2</room>
+    <room>rooms\test</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

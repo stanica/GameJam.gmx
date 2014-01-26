@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>0</kind>
-            <string>2</string>
+            <string>-2</string>
           </argument>
         </arguments>
       </action>
@@ -88,7 +88,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>obj_player.x += sign(hspeed) * obj_player.moveSpeed/2;
+            <string>if(x+16 &gt; obj_player.x || x-16 &lt; obj_player.x) {
+        obj_player.x += hspeed;
+}
+
+obj_player.hSpeed += sign(hspeed) * obj_player.moveSpeed/2;
 if (!obj_player.canJump)
    obj_player.canMove = false;
 </string>

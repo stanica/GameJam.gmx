@@ -47,7 +47,7 @@ image_speed = 0;
         <arguments>
           <argument>
             <kind>11</kind>
-            <room>room10</room>
+            <room>room_level2</room>
           </argument>
         </arguments>
       </action>
