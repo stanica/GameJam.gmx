@@ -25,7 +25,10 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>grav = obj_player.grav;
+            <string>if (object_exists(obj_player))
+   grav = obj_player.grav;
+else
+    grav = 0.7;
 
 </string>
           </argument>
@@ -49,7 +52,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>vSpeed = 5;
+            <string>var vSpeed = 5;
 if (place_meeting(x, y + vSpeed, par_wall)) {
    while (!place_meeting(x, y+sign(vSpeed), par_wall)) {
       y += sign(vSpeed);

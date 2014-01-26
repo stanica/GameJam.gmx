@@ -47,6 +47,8 @@
     <object>objects\obj_circuit</object>
     <object>objects\obj_gate</object>
     <object>objects\obj_ram</object>
+    <object>objects\obj_wrench</object>
+    <object>objects\obj_wire</object>
     <object>objects\obj_help</object>
     <object>objects\obj_back</object>
   </objects>
@@ -57,7 +59,7 @@
     <room>rooms\rm_tut1</room>
     <room>rooms\rm_tut2</room>
     <room>rooms\rm_tut3</room>
-    <room>rooms\room6</room>
+    <room>rooms\rm_tut4</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>
