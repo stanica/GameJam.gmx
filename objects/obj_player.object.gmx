@@ -27,14 +27,16 @@
             <kind>1</kind>
             <string>vSpeed = 0;
 hSpeed = 0;
-grav = 0.5;
+grav = 0.7;
 jumpHeight = 10;
+moveSpeed = 5;
 canJump = true;
 justTurned = true;
 ladder = false;
 //1 = right, -1 = left
 globalvar facing;
 facing = 1;
+canMove = true;
 image_speed = 0;
 image_index = 0;
 </string>
@@ -59,31 +61,32 @@ image_index = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (keyboard_check(vk_left) &amp;&amp; place_free(x-hSpeed, y)) {
+            <string>if (keyboard_check(vk_left) &amp;&amp; !place_meeting(x-moveSpeed,y, obj_platform) &amp;&amp; canMove) {
    if (facing == 1) {
       justTurned = true;
    }
    else 
       justTurned = false;
-   hSpeed = -5;
+   hSpeed = -moveSpeed;
    facing = -1;
    sprite_index = spr_left;
    image_speed = 0.25;
 }
 
-if (keyboard_check(vk_right) &amp;&amp; place_free(x-hSpeed, y)) {
+if (keyboard_check(vk_right) &amp;&amp; !place_meeting(x+moveSpeed,y, obj_platform) &amp;&amp; canMove) {
    if (facing == -1) {
       justTurned = true;
    }
    else
       justTurned = false;
-   hSpeed = 5;
+   hSpeed = moveSpeed;
    facing = 1;
    sprite_index = spr_right;
    image_speed = 0.25;
 }
 
 if (keyboard_check_released(vk_left) || keyboard_check_released(vk_right)) {
+   sprite_index = spr_stop;
    image_speed = 0;
    hSpeed = 0;
 }
@@ -93,7 +96,7 @@ if ((keyboard_check_direct(vk_left) &amp;&amp; keyboard_check_direct(vk_right)))
    image_speed = 0;
 }
 
-if (keyboard_check_direct(vk_space) &amp;&amp; canJump) {
+if (keyboard_check_direct(vk_space) &amp;&amp; canJump &amp;&amp; facing == 1) {
    vSpeed = -jumpHeight;
 }
 
@@ -137,6 +140,7 @@ if (place_meeting(x, y + vSpeed, par_wall)) {
       hSpeed = 0; 
    }
    vSpeed = 0; 
+   canMove = true;
 }
 else {
    canJump = false;
@@ -153,12 +157,15 @@ if (justTurned) {
     } 
 }
 
-if (position_meeting(x-sprite_xoffset+sprite_width/2,y-sprite_yoffset+sprite_height, obj_platform)) {
-   var obj = instance_position(x-sprite_xoffset+sprite_width/2,y-sprite_yoffset+sprite_height, obj_platform);
-   hSpeed = obj.hspeed;
-   vSpeed = 0;
+if position_meeting(x-sprite_xoffset+sprite_width/2,y-sprite_yoffset+sprite_height,obj_platform)
+{
+  objID=instance_position(x-sprite_xoffset+sprite_width/2,y-sprite_yoffset+sprite_height,obj_platform)
+  hspeed = objID.hspeed;
 }
-
+else
+{
+  hspeed:=0;
+}
 </string>
           </argument>
         </arguments>

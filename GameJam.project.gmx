@@ -13,6 +13,7 @@
     <sprite>sprites\spr_spikes</sprite>
     <sprite>sprites\spr_platform</sprite>
     <sprite>sprites\spr_marker</sprite>
+    <sprite>sprites\spr_stop</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
